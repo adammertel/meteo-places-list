@@ -1,0 +1,1 @@
+# meteo-places-list
