@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/meteo-places-list/static/css/main.42976bd0.css",
+    "main.js": "/meteo-places-list/static/js/main.8a2f6ab4.js",
+    "index.html": "/meteo-places-list/index.html",
+    "main.42976bd0.css.map": "/meteo-places-list/static/css/main.42976bd0.css.map",
+    "main.8a2f6ab4.js.map": "/meteo-places-list/static/js/main.8a2f6ab4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42976bd0.css",
+    "static/js/main.8a2f6ab4.js"
+  ]
+}
