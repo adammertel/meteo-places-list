@@ -1,15 +1,18 @@
 import { ReactElement } from "react";
 
-import { Table } from "@mantine/core";
+import { ActionIcon, Button, Table } from "@mantine/core";
 
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { IPlaceWeather } from "../types";
-import { PlacesWeather } from "./../states";
+import { PlacesWeather, SPlaces } from "./../states";
+import { FaTrash } from "react-icons/fa";
 
 interface ILocationTable {}
 
 const LocationTable = ({}: ILocationTable): ReactElement => {
   const placesWeather = useRecoilValue(PlacesWeather);
+  const [places, setPlaces] = useRecoilState(SPlaces);
+
   return (
     <div id="locationtable">
       <Table>
@@ -20,6 +23,7 @@ const LocationTable = ({}: ILocationTable): ReactElement => {
             <th>lng</th>
             <th>status</th>
             <th>temperature</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +35,16 @@ const LocationTable = ({}: ILocationTable): ReactElement => {
                 <td>{place.lng.toFixed(2)}</td>
                 <td>{place.status}</td>
                 <td>{place.weather ? place.weather.temperature : ""}</td>
+                <td>
+                  <ActionIcon variant="transparent">
+                    <FaTrash
+                      color="red"
+                      onClick={() => {
+                        setPlaces([...places.filter((p) => p.id !== place.id)]);
+                      }}
+                    />
+                  </ActionIcon>
+                </td>
               </tr>
             );
           })}
