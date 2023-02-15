@@ -5,8 +5,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import uuid4 from "uuid4";
 
 import api from "../api";
-import { SPlaces, SWeatherSetter } from "../states";
-import { ICoordinates, IPlace } from "../types";
+import { SPlaces, SWeatherSetter, SWeatherStatusSetter } from "../states";
+import { ICoordinates, IPlace, loadingState } from "../types";
 
 const createNewPlace = (coordinates: ICoordinates, placeId: string): IPlace => {
   return {
@@ -97,18 +97,30 @@ export default MapInput;
  * @returns
  */
 const WeatherGetter = ({ placeId }: { placeId: string }): ReactElement => {
-  const [_, weatherSetter] = useRecoilState(SWeatherSetter(placeId));
+  const [weather, weatherSetter] = useRecoilState(SWeatherSetter(placeId));
+  const [weatherStatus, weatherStatusSetter] = useRecoilState(
+    SWeatherStatusSetter(placeId)
+  );
   const places = useRecoilValue(SPlaces);
 
   useEffect(() => {
+    weatherStatusSetter(loadingState.LOADING);
     const place = places.find((p) => p.id === placeId);
     if (place) {
       console.log(`getting weather data for place with id ${placeId}`);
-      api.getMeteo({ lat: place.lat, lng: place.lng }, (weatherData: any) => {
-        setTimeout(() => {
-          weatherSetter(weatherData);
-        }, 500);
-      });
+      api.getMeteo(
+        { lat: place.lat, lng: place.lng },
+        (err, weatherData: any) => {
+          setTimeout(() => {
+            if (!err && weatherData) {
+              weatherSetter(weatherData);
+              weatherStatusSetter(loadingState.READY);
+            } else {
+              weatherStatusSetter(loadingState.FAILED);
+            }
+          }, 500);
+        }
+      );
     }
   }, []);
 

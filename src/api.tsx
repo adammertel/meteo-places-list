@@ -23,15 +23,21 @@ class Api {
     return `forecast?latitude=${lat}&longitude=${lng}&current_weather=true&current_weather=true&timezone=Europe%2FBerlin`;
   }
 
-  getMeteo(latLng: { lat: number; lng: number }, callback: Function) {
+  getMeteo(
+    latLng: { lat: number; lng: number },
+    callback: (err: boolean, data: object) => any
+  ) {
     const url = Api.meteoUrl(latLng.lat, latLng.lng);
-    try {
-      this.connection.get(url).then((res) => {
-        callback(res.data.current_weather);
+
+    this.connection
+      .get(url)
+      .then((res) => {
+        callback(false, res.data.current_weather);
+      })
+      .catch((error) => {
+        // error case
+        callback(true, {});
       });
-    } catch (err: any | AxiosError) {
-      throw { ...err.response.data };
-    }
   }
 }
 

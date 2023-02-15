@@ -3,14 +3,20 @@ export interface IPlace {
   lng: number;
   id: string;
 }
+
 export interface IPlaceWeather {
   lat: number;
   lng: number;
   id: string;
   weather: false | IWeatherData;
-  //weatherLoading: boolean;
+  status: false | loadingState;
 }
 
+export enum loadingState {
+  "LOADING" = "loading",
+  "READY" = "ready",
+  "FAILED" = "failed",
+}
 export interface ICoordinates {
   lat: number;
   lng: number;

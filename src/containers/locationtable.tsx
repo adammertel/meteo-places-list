@@ -18,6 +18,7 @@ const LocationTable = ({}: ILocationTable): ReactElement => {
             <th>id</th>
             <th>lat</th>
             <th>lng</th>
+            <th>status</th>
             <th>temperature</th>
           </tr>
         </thead>
@@ -28,6 +29,7 @@ const LocationTable = ({}: ILocationTable): ReactElement => {
                 <td>{place.id}</td>
                 <td>{place.lat.toFixed(2)}</td>
                 <td>{place.lng.toFixed(2)}</td>
+                <td>{place.status}</td>
                 <td>{place.weather ? place.weather.temperature : ""}</td>
               </tr>
             );
