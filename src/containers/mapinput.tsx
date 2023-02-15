@@ -251,7 +251,7 @@ const WeatherGetter = ({ placeId }: { placeId: string }): ReactElement => {
         }
       );
     }
-  });
+  }, []);
 
   return <></>;
 };
