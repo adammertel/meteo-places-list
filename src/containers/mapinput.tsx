@@ -1,11 +1,11 @@
 import { Button, NumberInput } from "@mantine/core";
 import { ReactElement, useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
 import {
   GiPerspectiveDiceSixFacesRandom,
   GiPositionMarker,
 } from "react-icons/gi";
 import { MdWrongLocation } from "react-icons/md";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // deck-gl has a lame support for TS, some parts needs to be ts-ignored
 //@ts-ignore
@@ -14,7 +14,7 @@ import uuid4 from "uuid4";
 
 import api from "../api";
 import { SPlaces, SWeatherSetter, SWeatherStatusSetter } from "../states";
-import { ICoordinates, IPlace, loadingState } from "../types";
+import { ICoordinates, loadingState } from "../types";
 import { createNewPlace, hexToRGB } from "../utils";
 import { colors } from "../variables";
 
@@ -223,10 +223,8 @@ export default MapInput;
  * this is an auxiliary component not returning any DOM. The only function is to handle the api call for a specific place
  */
 const WeatherGetter = ({ placeId }: { placeId: string }): ReactElement => {
-  const [weather, weatherSetter] = useRecoilState(SWeatherSetter(placeId));
-  const [weatherStatus, weatherStatusSetter] = useRecoilState(
-    SWeatherStatusSetter(placeId)
-  );
+  const weatherSetter = useSetRecoilState(SWeatherSetter(placeId));
+  const weatherStatusSetter = useSetRecoilState(SWeatherStatusSetter(placeId));
 
   const places = useRecoilValue(SPlaces);
 
@@ -253,7 +251,7 @@ const WeatherGetter = ({ placeId }: { placeId: string }): ReactElement => {
         }
       );
     }
-  }, []);
+  });
 
   return <></>;
 };

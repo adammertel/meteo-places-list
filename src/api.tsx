@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosInstance } from "axios";
+import axios, { AxiosInstance } from "axios";
 
 export class Api {
   private headers: object;
@@ -41,4 +41,5 @@ export class Api {
   }
 }
 
-export default new Api();
+const api = new Api();
+export default api;

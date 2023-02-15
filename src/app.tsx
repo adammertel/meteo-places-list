@@ -1,7 +1,6 @@
-import { Button } from "@mantine/core";
 import { ReactElement } from "react";
-import MapInput from "./containers/mapinput";
 import LocationTable from "./containers/locationtable";
+import MapInput from "./containers/mapinput";
 
 const App = (): ReactElement => {
   return (
