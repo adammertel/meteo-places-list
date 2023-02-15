@@ -1,4 +1,25 @@
-export interface IPlaces {
-  x: number;
-  y: number;
+export interface IPlace {
+  lat: number;
+  lng: number;
+  id: string;
+}
+export interface IPlaceWeather {
+  lat: number;
+  lng: number;
+  id: string;
+  weather: false | IWeatherData;
+  //weatherLoading: boolean;
+}
+
+export interface ICoordinates {
+  lat: number;
+  lng: number;
+}
+
+export interface IWeatherData {
+  temperature: number;
+  time: string;
+  weathercode: number;
+  winddirection: number;
+  windspeed: number;
 }
