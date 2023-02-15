@@ -4,6 +4,7 @@ export interface IPlace {
   id: string;
 }
 
+// this is a interface for combined place and weather objects
 export interface IPlaceWeather {
   lat: number;
   lng: number;
@@ -17,6 +18,7 @@ export enum loadingState {
   "READY" = "ready",
   "FAILED" = "failed",
 }
+
 export interface ICoordinates {
   lat: number;
   lng: number;

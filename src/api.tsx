@@ -1,9 +1,9 @@
 import axios, { AxiosError, AxiosInstance } from "axios";
 
-class Api {
+export class Api {
   private headers: object;
   private connection: AxiosInstance;
-  private baseUrl: string;
+  public baseUrl: string;
   constructor() {
     this.headers = {
       "Content-Type": "application/json",

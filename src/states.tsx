@@ -49,7 +49,7 @@ export const SWeatherStatusSetter = selectorFamily({
     },
   set: (placeId: string) => {
     return ({ set }, newValue) => {
-      return set(SWeatherStatus, (prevState: any) => {
+      set(SWeatherStatus, (prevState: any) => {
         return {
           ...prevState,
           [placeId]: newValue,
@@ -59,7 +59,7 @@ export const SWeatherStatusSetter = selectorFamily({
   },
 });
 
-// selector for getting merged data of places and their weather
+// selector for getting merged data of places, their weather, and loading status
 export const PlacesWeather = selector({
   key: "splaceweather",
   get: ({ get }): IPlaceWeather[] => {
