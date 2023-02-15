@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/meteo-places-list/static/css/main.42976bd0.css",
-    "main.js": "/meteo-places-list/static/js/main.d4681394.js",
+    "main.js": "/meteo-places-list/static/js/main.3404ee02.js",
     "index.html": "/meteo-places-list/index.html",
     "main.42976bd0.css.map": "/meteo-places-list/static/css/main.42976bd0.css.map",
-    "main.d4681394.js.map": "/meteo-places-list/static/js/main.d4681394.js.map"
+    "main.3404ee02.js.map": "/meteo-places-list/static/js/main.3404ee02.js.map"
   },
   "entrypoints": [
     "static/css/main.42976bd0.css",
-    "static/js/main.d4681394.js"
+    "static/js/main.3404ee02.js"
   ]
 }

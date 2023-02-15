@@ -148,7 +148,7 @@ const MapInput = ({}: IMapInput): ReactElement => {
         {/* inputs */}
         <div className="form-inputs">
           <NumberInput
-            label="lattitude"
+            label="latitude"
             className="form-input"
             value={newCoordinates.lat}
             precision={2}
